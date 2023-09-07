@@ -45,10 +45,10 @@ data class CurrentData(
             city_name,
             aqi,
             rh,
-            temp,
-            uv,
+            temp.toInt(),
+            uv.toInt(),
             weather,
-            wind_spd,
+            wind_spd.toInt(),
             timezone,
             ob_time
         )

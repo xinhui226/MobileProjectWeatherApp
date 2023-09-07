@@ -4,10 +4,10 @@ data class CurrentWeatherDisplay(
     val cityName:String,
     val airQuality:Int,
     val humidity: Int,
-    val temp: Double,
-    val uv: Double,
+    val temp: Int,
+    val uv: Int,
     val weather: Weather,
-    val windSpeed: Double,
+    val windSpeed: Int,
     val timezone:String,
     val timestamp:String,
 )

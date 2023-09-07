@@ -36,7 +36,7 @@ data class ForecastData(
 ){
     fun toForecastWeatherDisplay() :ForecastWeatherDisplay{
         return ForecastWeatherDisplay(
-            temp,
+            temp.toInt(),
             weather,
             timestamp_local
         )
