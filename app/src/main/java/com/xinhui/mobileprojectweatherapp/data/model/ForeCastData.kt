@@ -40,7 +40,9 @@ data class ForecastData(
     val wind_gust_spd: Double,
     val wind_spd: Double
 ){
+
     fun toForecastWeatherDisplay() :ForecastWeatherDisplay{
+
         return ForecastWeatherDisplay(
             temp.toInt().toString()+"°C",
             weather,
@@ -49,3 +51,4 @@ data class ForecastData(
         )
     }
 }
+

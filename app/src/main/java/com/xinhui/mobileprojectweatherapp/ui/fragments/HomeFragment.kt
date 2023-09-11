@@ -1,6 +1,7 @@
 package com.xinhui.mobileprojectweatherapp.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var adapter: HorizontalRVAdapter
 
+    private val baseIconUrl = "https://cdn.weatherbit.io/static/img/icons/"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -36,10 +39,21 @@ class HomeFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        val baseIconUrl = "https://cdn.weatherbit.io/static/img/icons/"
+        val swipeRefreshLayout = binding.swipeRefresh
+
+        swipeRefreshLayout.setOnRefreshListener {
+            refreshData()
+        }
+
         lifecycleScope.launch {
             viewModel.forecastWeather.collect{
                 setupAdapter()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.finishLoading.collect {
+                binding.swipeRefresh.isRefreshing = false
             }
         }
 
@@ -62,5 +76,10 @@ class HomeFragment : Fragment() {
 
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.horizontalRecyclerView.layoutManager = layoutManager
+    }
+
+    fun refreshData() {
+        binding.swipeRefresh.isRefreshing = true
+        viewModel.showCurrentForecastWeather()
     }
 }
