@@ -1,5 +1,11 @@
 package com.xinhui.mobileprojectweatherapp.data.model
 
+import android.os.Build
+import android.util.Log
+import androidx.annotation.RequiresApi
+import java.time.format.DateTimeFormatter
+
+
 data class ForecastData(
     val app_temp: Double,
     val clouds: Int,
@@ -34,11 +40,16 @@ data class ForecastData(
     val wind_gust_spd: Double,
     val wind_spd: Double
 ){
+
+    @RequiresApi(Build.VERSION_CODES.O)
     fun toForecastWeatherDisplay() :ForecastWeatherDisplay{
+
         return ForecastWeatherDisplay(
-            temp,
+            temp.toInt().toString()+"°C",
             weather,
-            timestamp_local
+            timestamp_local.split("T")[1]
+
         )
     }
 }
+
