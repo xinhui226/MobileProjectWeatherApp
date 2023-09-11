@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: TestViewModel by viewModels {
         TestViewModel.Factory
     }
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

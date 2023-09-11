@@ -18,6 +18,7 @@ class MyApplication:Application() {
 
         val locationDatabase = Room.databaseBuilder(this,
             LocationDatabase::class.java, LocationDatabase.dbName)
+            .fallbackToDestructiveMigration()
             .build()
 
         retrofitRepo = RetrofitRepo(weatherApi)

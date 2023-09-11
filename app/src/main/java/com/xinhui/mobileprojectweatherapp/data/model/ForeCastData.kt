@@ -38,7 +38,7 @@ data class ForecastData(
         return ForecastWeatherDisplay(
             temp.toInt(),
             weather,
-            timestamp_local
+            timestamp_local.split("T")[1]
         )
     }
 }

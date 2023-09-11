@@ -1,7 +1,7 @@
 package com.xinhui.mobileprojectweatherapp.data.model
 
 data class ForecastWeatherDisplay(
-    val temp: Int,
-    val weather: Weather,
-    val timeStamp: String
+    val temp: Int=0,
+    val weather: Weather=Weather(0,"",""),
+    val timeStamp: String=""
 )

@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.xinhui.mobileprojectweatherapp.data.model.Location
 
-@Database(entities = [Location::class], version = 1)
+@Database(entities = [Location::class], version = 7)
 abstract class LocationDatabase():RoomDatabase() {
     abstract val dao:LocationDao
 
