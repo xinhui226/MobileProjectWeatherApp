@@ -13,12 +13,15 @@ import com.xinhui.mobileprojectweatherapp.data.model.ForecastWeatherDisplay
 import com.xinhui.mobileprojectweatherapp.data.repository.RetrofitRepo
 import com.xinhui.mobileprojectweatherapp.ui.util.Constant.TAG
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val repo: RetrofitRepo
 ) : ViewModel() {
+    val finishLoading: MutableSharedFlow<Unit> = MutableSharedFlow()
 
     val currWeather: MutableStateFlow<CurrentWeatherDisplay> = MutableStateFlow(
         CurrentWeatherDisplay()
@@ -29,29 +32,30 @@ class HomeViewModel(
     )
 
     init {
-        showCurrentWeather()
-        showForecastWeather()
+        showCurrentForecastWeather()
     }
 
-    fun showCurrentWeather() {
+    fun showCurrentForecastWeather() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                currWeather.value = repo.getCurrWeather("Kampung Kok, Malaysia")
+                currWeather.value = repo.getCurrWeather("Osaka,Japan")
+                forecastWeather.value = repo.getForecastWeather("Osaka,Japan")
+                finishLoading.emit(Unit)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
 
-    fun showForecastWeather() {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                forecastWeather.value = repo.getForecastWeather("Kampung Kok, Malaysia")
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
+//    fun showForecastWeather() {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            try {
+//                forecastWeather.value = repo.getForecastWeather("Kampung Kok, Malaysia")
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//            }
+//        }
+//    }
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {

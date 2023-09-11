@@ -41,7 +41,6 @@ data class ForecastData(
     val wind_spd: Double
 ){
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun toForecastWeatherDisplay() :ForecastWeatherDisplay{
 
         return ForecastWeatherDisplay(
