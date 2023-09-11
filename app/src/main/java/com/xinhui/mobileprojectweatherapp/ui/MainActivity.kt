@@ -13,13 +13,8 @@ import com.xinhui.mobileprojectweatherapp.R
 import java.util.Properties
 
 class MainActivity : AppCompatActivity() {
-    private val viewModel: TestViewModel by viewModels {
-        TestViewModel.Factory
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        viewModel.test()
     }
 }

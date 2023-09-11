@@ -43,12 +43,13 @@ data class CurrentData(
     fun toCurrentWeatherDisplay(): CurrentWeatherDisplay {
         return CurrentWeatherDisplay(
             city_name,
-            aqi,
-            rh,
-            temp.toInt(),
-            uv.toInt(),
+            aqi.toString(),
+            rh.toString()+"%",
+            temp.toInt().toString()+"°C",
+            ((temp.toInt())*9/5+32).toString()+"°F",
+            uv.toInt().toString(),
             weather,
-            wind_spd.toInt(),
+            (wind_spd.toInt()*3600/1000).toString()+"km/h",
             timezone,
             ob_time
         )
