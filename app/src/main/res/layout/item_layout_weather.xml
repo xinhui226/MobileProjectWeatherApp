@@ -18,13 +18,13 @@
             android:padding="15dp">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tvLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/location"
                 android:textSize="23sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView2"
+                app:layout_constraintBottom_toTopOf="@+id/tvWeatherDesc"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tvWeatherDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Weather Type"
@@ -52,7 +52,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/tvLocation"
                 app:layout_constraintVertical_bias="1.0" />
 
             <androidx.constraintlayout.widget.Guideline

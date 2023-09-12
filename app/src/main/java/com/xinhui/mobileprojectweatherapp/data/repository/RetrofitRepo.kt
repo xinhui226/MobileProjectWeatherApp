@@ -3,6 +3,9 @@ package com.xinhui.mobileprojectweatherapp.data.repository
 import com.xinhui.mobileprojectweatherapp.data.model.CurrentResponse
 import com.xinhui.mobileprojectweatherapp.data.model.CurrentWeatherDisplay
 import com.xinhui.mobileprojectweatherapp.data.model.ForecastWeatherDisplay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.flowOf
 import retrofit2.Response
 
 class RetrofitRepo(private val api: WeatherApi) {
@@ -11,10 +14,9 @@ class RetrofitRepo(private val api: WeatherApi) {
         return api.getCurrentResponse(city = city).data[0].toCurrentWeatherDisplay()
     }
 
-    suspend fun getForecastWeather(city: String):List<ForecastWeatherDisplay>{
+    suspend fun getForecastWeather(city: String): List<ForecastWeatherDisplay> {
         return api.getForecastResponse(city = city).data.map {
             it.toForecastWeatherDisplay()
         }
     }
-
 }
