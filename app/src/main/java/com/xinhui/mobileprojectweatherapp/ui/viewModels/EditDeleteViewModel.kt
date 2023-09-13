@@ -70,6 +70,13 @@ class EditDeleteViewModel(
                     temp = location3.temp,
                     localtime = localtimeFormatter(location3.timezone,location3.timestamp),
                     weatherDesc = location3.weather.description))
+
+            val location4 = retrofitRepo.getCurrWeather("Narro,Italy")
+            locationRepo.savedLocation(
+                Location(city = location4.cityName,
+                    temp = location4.temp,
+                    localtime = localtimeFormatter(location3.timezone,location3.timestamp),
+                    weatherDesc = location4.weather.description))
         }
     }
 

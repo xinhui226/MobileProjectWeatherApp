@@ -19,8 +19,8 @@ fun localtimeFormatter(timezone:String, timestamp:String):String{
     return LocalDateTime.parse(timestamp, formatter).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of(timezone)).format(formatter)
 }
 
-fun RecyclerView.Adapter<*>.update(
-    prevList:List<Location>,newList: List<Location>,compare:(Location,Location)->Boolean
+fun <T>RecyclerView.Adapter<*>.update(
+    prevList:List<T>,newList: List<T>,compare:(T,T)->Boolean
 ){
         val callback = object: DiffUtil.Callback(){
             override fun getOldListSize(): Int =prevList.size
@@ -32,7 +32,7 @@ fun RecyclerView.Adapter<*>.update(
             }
 
             override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                return prevList[oldItemPosition].priority == newList[newItemPosition].priority
+                return prevList[oldItemPosition] == newList[newItemPosition]
             }
 
         }
