@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.xinhui.mobileprojectweatherapp.data.model.Location
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -18,8 +19,8 @@ fun localtimeFormatter(timezone:String, timestamp:String):String{
     return LocalDateTime.parse(timestamp, formatter).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of(timezone)).format(formatter)
 }
 
-fun <T>RecyclerView.Adapter<*>.update(
-    prevList:List<T>,newList: List<T>,compare:(T,T)->Boolean
+fun RecyclerView.Adapter<*>.update(
+    prevList:List<Location>,newList: List<Location>,compare:(Location,Location)->Boolean
 ){
         val callback = object: DiffUtil.Callback(){
             override fun getOldListSize(): Int =prevList.size
@@ -31,7 +32,7 @@ fun <T>RecyclerView.Adapter<*>.update(
             }
 
             override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                return prevList[oldItemPosition] == newList[newItemPosition]
+                return prevList[oldItemPosition].priority == newList[newItemPosition].priority
             }
 
         }
