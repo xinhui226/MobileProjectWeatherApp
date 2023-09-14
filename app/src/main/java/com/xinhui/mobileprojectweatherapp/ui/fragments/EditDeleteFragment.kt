@@ -47,8 +47,6 @@ class EditDeleteFragment : Fragment(),StartDragListener {
         binding.run {
             editDeleteVM = viewModel
             lifecycleOwner = lifecycleOwner
-
-            tvDone.setOnClickListener { viewModel.addLocation() }
         }
 
 //        viewModel.currentWeather.asLiveData().observe(viewLifecycleOwner) {
