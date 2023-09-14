@@ -1,6 +1,5 @@
 package com.xinhui.mobileprojectweatherapp.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View.OnTouchListener
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.xinhui.mobileprojectweatherapp.data.model.Location
 import com.xinhui.mobileprojectweatherapp.databinding.ItemLayoutEditdelWeatherBinding
-import com.xinhui.mobileprojectweatherapp.ui.util.Constant.TAG
 import com.xinhui.mobileprojectweatherapp.ui.util.ItemMoveCallback
 import com.xinhui.mobileprojectweatherapp.ui.util.StartDragListener
 import com.xinhui.mobileprojectweatherapp.ui.util.update
@@ -22,7 +20,7 @@ class EditDeleteWeatherAdapter(
     private val onDeleteClick:(Location)->Unit,
 ):RecyclerView.Adapter<EditDeleteWeatherAdapter.WeatherViewHolder>(), ItemMoveCallback.ItemTouchHelperContract  {
 
-    var shouldUpdate = false
+    var shouldUpdate = true
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
         val binding = ItemLayoutEditdelWeatherBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return WeatherViewHolder(binding)
@@ -53,36 +51,25 @@ class EditDeleteWeatherAdapter(
     fun setLocation(locations: List<Location>){
         val prev = this.locations
         this.locations = locations
-        update(prev,this.locations){ first,sec ->
-            first.priority == sec.priority
+        if(shouldUpdate){
+            update(prev,this.locations){ first,sec ->
+                first.priority == sec.priority
+            }
         }
     }
 
     override fun onRowMoved(fromPosition: Int, toPosition: Int) {
-        if (fromPosition < toPosition) {
             onDragUpDown(fromPosition, toPosition)
-            Log.d(TAG, "onRowMoved: down, $fromPosition, $toPosition")
-            for (i in fromPosition until toPosition) {
-                Collections.swap(locations, i, i + 1)
-            }
-        } else {
-            onDragUpDown(fromPosition, toPosition)
-            Log.d(TAG, "onRowMoved: up, $fromPosition, $toPosition")
-            for (i in fromPosition downTo toPosition + 1) {
-                Collections.swap(locations, i, i - 1)
-            }
-        }
-        notifyItemMoved(fromPosition, toPosition)
+            Collections.swap(locations, fromPosition, toPosition)
+            notifyItemMoved(fromPosition, toPosition)
     }
 
     override fun onRowSelected(myViewHolder: WeatherViewHolder?) {
-//        myViewHolder?.vbinding?.llCard?.setBackgroundColor(Color.GRAY)
-//        shouldUpdate = true
+        shouldUpdate = false
     }
 
     override fun onRowClear(myViewHolder: WeatherViewHolder?) {
-//        myViewHolder?.vbinding?.llCard?.setBackgroundColor(Color.WHITE)
-
+        shouldUpdate = false
     }
 
     class WeatherViewHolder(val vbinding:ItemLayoutEditdelWeatherBinding):RecyclerView.ViewHolder(vbinding.root)
