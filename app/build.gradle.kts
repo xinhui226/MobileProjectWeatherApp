@@ -27,6 +27,7 @@ android {
 
         buildConfigField("String", "API_URL", localProps["api_baseUrl"].toString())
         buildConfigField("String", "API_KEY", localProps["apiKey"].toString())
+        buildConfigField("String", "BaseIconUrl", localProps["baseIconUrl"].toString())
     }
 
     buildTypes {
@@ -53,7 +54,7 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
