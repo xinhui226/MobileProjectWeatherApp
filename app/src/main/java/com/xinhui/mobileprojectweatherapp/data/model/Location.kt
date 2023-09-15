@@ -13,4 +13,5 @@ data class Location(
     val temp:String,
     val localtime:String,
     val weatherDesc:String,
+    val priority:Int = 0,
 )

@@ -1,21 +1,26 @@
 package com.xinhui.mobileprojectweatherapp.ui.adapters
 
-import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.xinhui.mobileprojectweatherapp.data.model.Location
 import com.xinhui.mobileprojectweatherapp.databinding.ItemLayoutEditdelWeatherBinding
-import com.xinhui.mobileprojectweatherapp.ui.util.Constant.TAG
+import com.xinhui.mobileprojectweatherapp.ui.util.ItemMoveCallback
+import com.xinhui.mobileprojectweatherapp.ui.util.StartDragListener
 import com.xinhui.mobileprojectweatherapp.ui.util.update
+import java.util.Collections
+
 
 class EditDeleteWeatherAdapter(
     private var locations:List<Location>,
-    private val onDeleteClick:(Location)->Unit
-):RecyclerView.Adapter<EditDeleteWeatherAdapter.WeatherViewHolder>() {
+    private val mStartDragListener:StartDragListener,
+    private val onDragUpDown:(Int,Int)->Unit,
+    private val onDeleteClick:(Location)->Unit,
+):RecyclerView.Adapter<EditDeleteWeatherAdapter.WeatherViewHolder>(), ItemMoveCallback.ItemTouchHelperContract  {
 
+    var shouldUpdate = true
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
         val binding = ItemLayoutEditdelWeatherBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return WeatherViewHolder(binding)
@@ -25,25 +30,46 @@ class EditDeleteWeatherAdapter(
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         val location = locations[position]
-        Log.d(TAG, "onBindViewHolder: ${location.hashCode()}")
         holder.vbinding.run {
             tvTemp.text = location.temp
             tvLastUpd.text = location.localtime
             tvWeatherDesc.text = location.weatherDesc
             tvLocation.text = location.city
             ivDelete.setOnClickListener { onDeleteClick(location) }
-//            ivDrag
+        }
+
+        holder.vbinding.ivDrag.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action ==
+                MotionEvent.ACTION_DOWN
+            ) {
+                mStartDragListener.requestDrag(holder)
+            }
+            false
+        })
+    }
+
+    fun setLocation(locations: List<Location>){
+        val prev = this.locations
+        this.locations = locations
+        if(shouldUpdate){
+            update(prev,this.locations){ first,sec ->
+                first.priority == sec.priority
+            }
         }
     }
 
-    fun setLocation(location: List<Location>){
-        Log.d(TAG, "setLocation: $location")
-//      notifyDataSetChanged()
-        val prev = this.locations
-        this.locations = location
-        update(prev,this.locations){ first,sec ->
-            first.id == sec.id
-        }
+    override fun onRowMoved(fromPosition: Int, toPosition: Int) {
+            onDragUpDown(fromPosition, toPosition)
+            Collections.swap(locations, fromPosition, toPosition)
+            notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onRowSelected(myViewHolder: WeatherViewHolder?) {
+        shouldUpdate = false
+    }
+
+    override fun onRowClear(myViewHolder: WeatherViewHolder?) {
+        shouldUpdate = false
     }
 
     class WeatherViewHolder(val vbinding:ItemLayoutEditdelWeatherBinding):RecyclerView.ViewHolder(vbinding.root)
