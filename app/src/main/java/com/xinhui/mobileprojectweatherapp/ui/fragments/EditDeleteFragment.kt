@@ -10,13 +10,9 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.xinhui.mobileprojectweatherapp.data.repository.LocationRepo
 import com.xinhui.mobileprojectweatherapp.databinding.EditDeleteWeatherBinding
 import com.xinhui.mobileprojectweatherapp.ui.adapters.EditDeleteWeatherAdapter
-import com.xinhui.mobileprojectweatherapp.ui.util.Constant.TAG
 import com.xinhui.mobileprojectweatherapp.ui.viewModels.EditDeleteViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @RequiresApi(Build.VERSION_CODES.O)

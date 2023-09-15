@@ -1,10 +1,8 @@
 package com.xinhui.mobileprojectweatherapp.ui.adapters
 
-import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.xinhui.mobileprojectweatherapp.data.model.Location
 import com.xinhui.mobileprojectweatherapp.databinding.ItemLayoutEditdelWeatherBinding
