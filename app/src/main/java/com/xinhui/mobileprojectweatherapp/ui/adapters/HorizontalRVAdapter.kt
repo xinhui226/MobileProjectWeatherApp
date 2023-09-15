@@ -1,15 +1,14 @@
-package com.xinhui.mobileprojectweatherapp.adapter
+package com.xinhui.mobileprojectweatherapp.ui.adapters
 
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.xinhui.mobileprojectweatherapp.BuildConfig
 import com.xinhui.mobileprojectweatherapp.data.model.ForecastWeatherDisplay
 import com.xinhui.mobileprojectweatherapp.databinding.HorizontalRvLayoutBinding
-import java.time.format.DateTimeFormatter
 
 
 class HorizontalRVAdapter(var forecast: List<ForecastWeatherDisplay>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -25,13 +24,12 @@ class HorizontalRVAdapter(var forecast: List<ForecastWeatherDisplay>) : Recycler
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val forecastWeather = forecast[position]
-        val baseIconURL = "https://cdn.weatherbit.io/static/img/icons/"
 
         if(holder is ForecastViewHolder) {
             holder.binding.run{
                 tvShowWeatherTempInHSV.text = forecastWeather.temp
 
-                val iconURL = "$baseIconURL${forecastWeather.weather.icon}.png"
+                val iconURL = "${BuildConfig.BaseIconUrl}${forecastWeather.weather.icon}.png"
                 Glide
                     .with(holder.itemView)
                     .load(iconURL)
