@@ -11,11 +11,18 @@ class LocationRepo(private val dao: LocationDao) {
     }
 
     fun getLocationById(id:Int):Location?{
-        return dao.getLocationsById(id)
+        return dao.getLocationById(id)
+    }
+
+    fun updateLocationPriority(id:Int, priority:Int){
+        return dao.updatePriorityById(id,priority)
     }
 
     fun savedLocation(location: Location){
-        dao.savedLocation(location)
+        val id = dao.savedLocation(location)
+        id?.let {
+            dao.updatePriorityById(it.toInt(), it.toInt())
+        }
     }
 
     fun removeSavedLocation(location: Location){

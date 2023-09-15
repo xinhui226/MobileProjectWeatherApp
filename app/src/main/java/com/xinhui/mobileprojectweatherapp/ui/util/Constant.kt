@@ -18,7 +18,7 @@ fun localtimeFormatter(timezone:String, timestamp:String):String{
     return LocalDateTime.parse(timestamp, formatter).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of(timezone)).format(formatter)
 }
 
-fun <T>RecyclerView.Adapter<*>.update(
+fun <T> RecyclerView.Adapter<*>.update(
     prevList:List<T>,newList: List<T>,compare:(T,T)->Boolean
 ){
         val callback = object: DiffUtil.Callback(){
