@@ -15,4 +15,9 @@
         android:name="com.xinhui.mobileprojectweatherapp.ui.fragments.EditDeleteFragment"
         android:label="EditDeleteFragment"
         tools:layout="@layout/edit_delete_weather"/>
+    <fragment
+        android:id="@+id/searchPageFragment"
+        android:name="com.xinhui.mobileprojectweatherapp.ui.fragments.SearchPageFragment"
+        android:label="SearchPageFragment"
+        tools:layout="@layout/search_page"/>
 </navigation>

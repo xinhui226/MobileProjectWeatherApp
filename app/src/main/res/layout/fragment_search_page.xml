@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout>
+    <data>
+        <variable
+            name="searchPageVM"
+            type="com.xinhui.mobileprojectweatherapp.ui.viewModels.SearchPageViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -50,7 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvWeather" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvItems"
+            android:id="@+id/rvSearchPage"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
