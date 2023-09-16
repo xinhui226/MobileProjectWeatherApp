@@ -11,11 +11,17 @@ import com.xinhui.mobileprojectweatherapp.data.model.Location
 import com.xinhui.mobileprojectweatherapp.data.repository.LocationRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class EditDeleteViewModel(
     val locationRepo: LocationRepo,
 ) : ViewModel() {
+
+    private lateinit var firstLocation:Location
+    private lateinit var secLocation:Location
+
+
 
     fun deleteLocation(location: Location){
         viewModelScope.launch(Dispatchers.IO) {
@@ -25,6 +31,18 @@ class EditDeleteViewModel(
 
     fun getLocations():Flow<List<Location>>{
           return locationRepo.getLocations()
+    }
+
+    fun updLocationPrio(from:Int,to:Int){
+        viewModelScope.launch(Dispatchers.IO) {
+               val locations = locationRepo.getLocations().first()
+                firstLocation = locations[from]
+                secLocation = locations[to]
+
+
+                locationRepo.updateLocationPriority(firstLocation.id!!,to)
+                locationRepo.updateLocationPriority(secLocation.id!!,from)
+        }
     }
 
     companion object {

@@ -6,7 +6,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.xinhui.mobileprojectweatherapp.ui.viewModels.HomeViewModel" />
+            type="com.xinhui.mobileprojectweatherapp.ui.viewModels.BaseLocationViewModel" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -18,18 +18,47 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <ImageView
-                android:id="@+id/ivListItemMenu"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_list"
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.86"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.123" />
+                app:layout_constraintVertical_bias="0.123">
+                <ImageView
+                    android:id="@+id/ivListItemMenu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_list"
+                    android:layout_gravity="end"
+                    />
+                <TextView
+                    android:id="@+id/tvSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save_location"
+                    android:textSize="16sp"
+                    android:layout_gravity="end"
+                    android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tvRemove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/remove"
+                    android:textSize="16sp"
+                    android:layout_gravity="end"
+                    android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tvCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/tvShowLocation"

@@ -7,4 +7,7 @@
     <string name="humidity">Humidity</string>
     <string name="us_aqi">US AQI</string>
     <string name="today">Today</string>
+    <string name="save_location">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="remove">Remove</string>
 </resources>
