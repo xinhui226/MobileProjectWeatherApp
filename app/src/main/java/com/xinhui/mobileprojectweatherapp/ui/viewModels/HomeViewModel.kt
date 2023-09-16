@@ -1,6 +1,5 @@
 package com.xinhui.mobileprojectweatherapp.ui.viewModels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
@@ -11,11 +10,9 @@ import com.xinhui.mobileprojectweatherapp.MyApplication
 import com.xinhui.mobileprojectweatherapp.data.model.CurrentWeatherDisplay
 import com.xinhui.mobileprojectweatherapp.data.model.ForecastWeatherDisplay
 import com.xinhui.mobileprojectweatherapp.data.repository.RetrofitRepo
-import com.xinhui.mobileprojectweatherapp.ui.util.Constant.TAG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -23,13 +20,11 @@ class HomeViewModel(
 ) : ViewModel() {
     val finishLoading: MutableSharedFlow<Unit> = MutableSharedFlow()
 
-    val currWeather: MutableStateFlow<CurrentWeatherDisplay> = MutableStateFlow(
-        CurrentWeatherDisplay()
-    )
+    val currWeather: MutableStateFlow<CurrentWeatherDisplay> =
+        MutableStateFlow(CurrentWeatherDisplay())
 
-    val forecastWeather: MutableStateFlow<List<ForecastWeatherDisplay>> = MutableStateFlow(
-        listOf(ForecastWeatherDisplay())
-    )
+    val forecastWeather: MutableStateFlow<List<ForecastWeatherDisplay>> =
+        MutableStateFlow(listOf(ForecastWeatherDisplay()))
 
     init {
         showCurrentForecastWeather()
@@ -38,24 +33,16 @@ class HomeViewModel(
     fun showCurrentForecastWeather() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                currWeather.value = repo.getCurrWeather("Osaka,Japan")
-                forecastWeather.value = repo.getForecastWeather("Osaka,Japan")
+                currWeather.value = repo.getCurrWeather(
+                    "Georgetown,Malaysia")
+                forecastWeather.value = repo.getForecastWeather(
+                    "Georgetown,Malaysia")
                 finishLoading.emit(Unit)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
-
-//    fun showForecastWeather() {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            try {
-//                forecastWeather.value = repo.getForecastWeather("Kampung Kok, Malaysia")
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//            }
-//        }
-//    }
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {

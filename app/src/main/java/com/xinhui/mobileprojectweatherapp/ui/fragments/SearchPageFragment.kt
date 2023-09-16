@@ -1,25 +1,33 @@
 package com.xinhui.mobileprojectweatherapp.ui.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.widget.PopupMenu
+import android.widget.ArrayAdapter
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.xinhui.mobileprojectweatherapp.R
 import com.xinhui.mobileprojectweatherapp.databinding.FragmentSearchPageBinding
+import com.xinhui.mobileprojectweatherapp.ui.util.Constant.TAG
 import com.xinhui.mobileprojectweatherapp.ui.viewModels.SearchPageViewModel
 
 class SearchPageFragment : Fragment() {
     private lateinit var binding: FragmentSearchPageBinding
-    private lateinit var viewModel: SearchPageViewModel
+    private val viewModel: SearchPageViewModel by viewModels{
+        SearchPageViewModel.Factory
+    }
+    private lateinit var navController: NavController
+    private val cities = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSearchPageBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -27,29 +35,31 @@ class SearchPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.ivHamburger.setOnClickListener {
-            showPopupMenu(it)
+        navController = NavHostFragment.findNavController(this)
+
+        val file = resources.openRawResource(R.raw.cities)
+        file.bufferedReader().useLines {
+            it.forEach { c ->
+                cities.add(c)
+            }
+        }
+        val adapter = ArrayAdapter(
+            requireContext(),
+            com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
+            cities
+        )
+
+        binding.run {
+            autocomplete.setAdapter(adapter)
+            autocomplete.addTextChangedListener {
+                Log.d(TAG, "onViewCreated: ${it.toString()}")
+            }
+
+            ivEdit.setOnClickListener {
+                val action = SearchPageFragmentDirections.actionSearchPageToEditDelete()
+                navController.navigate(action)
+            }
         }
     }
 
-    private fun showPopupMenu(view: View) {
-        val popupMenu = PopupMenu(requireContext(), view)
-        popupMenu.menuInflater.inflate(R.menu.pop_up_menu, popupMenu.menu)
-        popupMenu.setForceShowIcon(true)
-        popupMenu.show()
-        popupMenu.setOnMenuItemClickListener {
-            when(it.itemId) {
-                R.id.editList -> {
-                    Toast.makeText(requireContext(), it.title, Toast.LENGTH_LONG).show()
-                }
-                R.id.celcius -> {
-                    Toast.makeText(requireContext(), it.title, Toast.LENGTH_LONG).show()
-                }
-                R.id.fahrenheit -> {
-                    Toast.makeText(requireContext(), it.title, Toast.LENGTH_LONG).show()
-                }
-            }
-            return@setOnMenuItemClickListener true
-        }
-    }
 }

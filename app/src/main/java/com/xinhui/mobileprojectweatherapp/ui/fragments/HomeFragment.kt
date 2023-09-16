@@ -1,13 +1,14 @@
 package com.xinhui.mobileprojectweatherapp.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.xinhui.mobileprojectweatherapp.R
@@ -21,23 +22,33 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels {
         HomeViewModel.Factory
     }
-
+    private lateinit var navController: NavController
     private lateinit var adapter: HorizontalRVAdapter
-
     private val baseIconUrl = "https://cdn.weatherbit.io/static/img/icons/"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        binding = ShowWeatherBinding.inflate(inflater, container, false)
+    ): View {
+        binding = ShowWeatherBinding.inflate(
+            inflater,
+            container,
+            false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
+        navController = NavHostFragment.findNavController(this)
+
+        binding.run {
+            viewModel = this@HomeFragment.viewModel
+            lifecycleOwner = viewLifecycleOwner
+            ivListItemMenu.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeToSearchPage()
+                navController.navigate(action)
+            }
+        }
 
         val swipeRefreshLayout = binding.swipeRefresh
 
@@ -74,7 +85,10 @@ class HomeFragment : Fragment() {
 
         binding.horizontalRecyclerView.adapter = adapter
 
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL,
+            false)
         binding.horizontalRecyclerView.layoutManager = layoutManager
     }
 

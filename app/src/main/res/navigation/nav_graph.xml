@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/searchPageFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -11,7 +11,7 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_searchPageFragment"
+            android:id="@+id/action_home_to_searchPage"
             app:destination="@id/searchPageFragment" />
     </fragment>
     <fragment
@@ -20,13 +20,17 @@
         android:label="SearchPageFragment"
         tools:layout="@layout/search_page">
         <action
-            android:id="@+id/action_searchPageFragment_to_editDeleteFragment"
+            android:id="@+id/action_searchPage_to_editDelete"
             app:destination="@id/editDeleteFragment" />
+        <action
+            android:id="@+id/action_searchPage_to_home"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/editDeleteFragment"
         android:name="com.xinhui.mobileprojectweatherapp.ui.fragments.EditDeleteFragment"
         android:label="EditDeleteFragment"
-        tools:layout="@layout/edit_delete_weather"/>
+        tools:layout="@layout/edit_delete_weather">
+    </fragment>
 
 </navigation>
