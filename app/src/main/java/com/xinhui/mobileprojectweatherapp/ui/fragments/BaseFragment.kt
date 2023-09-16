@@ -16,7 +16,6 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         lifecycleScope.launch {
             viewModel.error.collect {
                 Snackbar.make(view, it, Snackbar.LENGTH_LONG)

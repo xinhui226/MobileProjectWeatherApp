@@ -8,9 +8,12 @@ import com.xinhui.mobileprojectweatherapp.MyApplication
 import com.xinhui.mobileprojectweatherapp.data.repository.RetrofitRepo
 
 class HomeViewModel(
-    repo: RetrofitRepo
+    repo: RetrofitRepo,
 ) : BaseLocationViewModel(repo) {
-
+    override var city = "Georgetown,MY"
+    init {
+        showCurrentForecastWeather()
+    }
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {

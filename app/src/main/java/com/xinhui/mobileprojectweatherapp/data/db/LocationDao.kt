@@ -25,4 +25,11 @@ interface LocationDao {
 
     @Query("UPDATE location SET priority = :priority WHERE id = :id")
     fun updatePriorityById(id:Int,priority: Int)
+
+    @Query("UPDATE location SET city = :city, " +
+            "`temp` = :temp, " +
+            "localtime = :localtime, " +
+            "weatherDesc = :weatherDesc " +
+            "WHERE id = :id")
+    fun updateLocationById(id:Int,city: String,temp:String,localtime:String,weatherDesc:String)
 }

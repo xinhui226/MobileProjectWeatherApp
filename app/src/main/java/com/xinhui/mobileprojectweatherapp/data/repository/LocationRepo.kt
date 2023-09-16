@@ -18,14 +18,19 @@ class LocationRepo(private val dao: LocationDao) {
         return dao.updatePriorityById(id,priority)
     }
 
-    fun savedLocation(location: Location){
+    fun savedLocation(location: Location):Long?{
         val id = dao.savedLocation(location)
         id?.let {
             dao.updatePriorityById(it.toInt(), it.toInt())
         }
+        return  id
     }
 
     fun removeSavedLocation(location: Location){
         dao.removeSavedLocation(location)
+    }
+
+    fun updateLocationWeather(id:Int,city: String,temp:String,localtime:String,weatherDesc:String){
+        return dao.updateLocationById(id,city,temp,localtime,weatherDesc)
     }
 }

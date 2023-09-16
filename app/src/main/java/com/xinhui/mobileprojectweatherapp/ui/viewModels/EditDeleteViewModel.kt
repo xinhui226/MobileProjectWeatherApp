@@ -2,6 +2,7 @@ package com.xinhui.mobileprojectweatherapp.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
@@ -48,8 +49,7 @@ class EditDeleteViewModel(
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val locationRepository =
-                    (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as MyApplication)
-                        .locationRepo
+                    (this[APPLICATION_KEY] as MyApplication).locationRepo
                 EditDeleteViewModel(
                     locationRepo = locationRepository,
                 )
