@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.xinhui.mobileprojectweatherapp.ui.viewModels.HomeViewModel" />
+            type="com.xinhui.mobileprojectweatherapp.ui.viewModels.BaseLocationViewModel" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
