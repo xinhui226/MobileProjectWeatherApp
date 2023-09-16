@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="searchPageVM"
@@ -8,11 +8,11 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="15dp"
+        android:background="@drawable/gradient_bg"
         tools:context=".ui.fragments.SearchPageFragment">
 
         <TextView
@@ -39,7 +39,8 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.002" />
+            app:layout_constraintVertical_bias="0.002"
+            app:tint="@color/white" />
 
         <EditText
             android:id="@+id/etCity"

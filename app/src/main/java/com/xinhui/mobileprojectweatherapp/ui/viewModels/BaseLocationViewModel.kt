@@ -17,13 +17,13 @@ abstract class BaseLocationViewModel(
     fun showCurrentForecastWeather() {
         viewModelScope.launch(Dispatchers.IO) {
             safeApiCall {
-                repo.getCurrWeather("Georgetown, Malaysia")
+                repo.getCurrWeather("Osaka, Japan")
             }?.let {
                 currWeather.value = it
             }
 
             safeApiCall {
-                repo.getForecastWeather("Georgetown, Malaysia")
+                repo.getForecastWeather("Osaka, Japan")
             }?.let {
                 forecastWeather.value = it
             }

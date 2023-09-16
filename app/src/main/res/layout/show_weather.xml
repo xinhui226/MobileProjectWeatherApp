@@ -19,7 +19,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_bg"
+            >
 
 
             <ImageView
@@ -27,6 +29,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_list"
+                app:tint="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/guideline3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.86"
@@ -40,7 +43,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
                 android:text="@{viewModel.currWeather.cityName}"
-                android:textColor="@color/black"
                 android:textSize="35sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/guideline3"
@@ -67,7 +69,6 @@
                 android:fontFamily="sans-serif"
                 android:paddingStart="15dp"
                 android:text="@{viewModel.currWeather.temp}"
-                android:textColor="@color/black"
                 android:textSize="75sp"
                 android:textStyle="bold|normal"
                 app:layout_constraintBottom_toTopOf="@+id/guideline12"
@@ -84,7 +85,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
                 android:text="@{viewModel.currWeather.weather.description}"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toTopOf="@+id/guideline12"
@@ -98,11 +98,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 app:cardCornerRadius="18dp"
+                android:backgroundTint="#3CF1EBF1"
                 app:layout_constraintBottom_toTopOf="@+id/guideline13"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline12"
-                app:strokeColor="@color/black"
+                app:strokeColor="@color/white"
                 app:strokeWidth="2dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -126,7 +127,8 @@
                             android:id="@+id/ivIcon"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/wind_speed" />
+                            android:src="@drawable/wind_speed"
+                            app:tint="@color/white" />
 
                         <TextView
                             android:id="@+id/tvShowSpeed"
@@ -135,7 +137,7 @@
                             android:layout_marginTop="8dp"
                             android:fontFamily="serif"
                             android:text="@{viewModel.currWeather.windSpeed}"
-                            android:textColor="@color/black" />
+                            />
 
                         <TextView
                             android:id="@+id/tvShowWeatherType"
@@ -143,7 +145,6 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
                             android:text="Wind"
-                            android:textColor="@color/black"
                             android:textSize="12sp" />
 
                     </LinearLayout>
@@ -154,7 +155,7 @@
                         android:layout_height="0dp"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginStart="20dp"
-                        android:background="@color/black"
+                        android:background="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/linearLayout"
                         app:layout_constraintTop_toTopOf="parent"
@@ -165,7 +166,7 @@
                         android:layout_width="3dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="152dp"
-                        android:background="@color/black"
+                        android:background="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/linearLayout"
                         app:layout_constraintTop_toTopOf="parent"
@@ -188,7 +189,9 @@
                             android:id="@+id/imageView4"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/air_quality" />
+                            android:src="@drawable/air_quality"
+                            app:tint="@color/white"
+                            />
 
                         <TextView
                             android:id="@+id/textView3"
@@ -197,7 +200,7 @@
                             android:layout_marginTop="8dp"
                             android:fontFamily="serif"
                             android:text="@{viewModel.currWeather.airQuality}"
-                            android:textColor="@color/black" />
+                            />
 
                         <TextView
                             android:id="@+id/textView5"
@@ -205,7 +208,6 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
                             android:text="@string/us_aqi"
-                            android:textColor="@color/black"
                             android:textSize="12sp" />
 
                     </LinearLayout>
@@ -252,7 +254,9 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/humidity" />
+                            android:src="@drawable/humidity"
+                            app:tint="@color/white"
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -260,14 +264,13 @@
                             android:layout_marginTop="8dp"
                             android:fontFamily="serif"
                             android:text="@{viewModel.currWeather.humidity}"
-                            android:textColor="@color/black" />
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
                             android:text="@string/humidity"
-                            android:textColor="@color/black"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -281,7 +284,6 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="serif"
                 android:text="@string/today"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -395,7 +397,7 @@
             <!--                        android:layout_marginBottom="5dp"-->
             <!--                        android:text="Temp"-->
             <!--                        android:fontFamily="serif"-->
-            <!--                        android:textColor="@color/black" />-->
+            <!--                        />-->
 
             <!--                    <ImageView-->
             <!--                        android:id="@+id/ivShowIconInHSV"-->
@@ -410,7 +412,7 @@
             <!--                        android:layout_marginTop="5dp"-->
             <!--                        android:text="Time"-->
             <!--                        android:fontFamily="serif"-->
-            <!--                        android:textColor="@color/black" />-->
+            <!--                        />-->
             <!--                </LinearLayout>-->
             <!--            </LinearLayout>-->
             <!--        </HorizontalScrollView>-->

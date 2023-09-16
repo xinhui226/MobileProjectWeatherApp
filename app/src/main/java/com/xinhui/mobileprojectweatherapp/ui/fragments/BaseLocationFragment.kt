@@ -1,10 +1,15 @@
 package com.xinhui.mobileprojectweatherapp.ui.fragments
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -16,7 +21,7 @@ import com.xinhui.mobileprojectweatherapp.ui.viewModels.BaseLocationViewModel
 import kotlinx.coroutines.launch
 
 abstract class BaseLocationFragment : BaseFragment() {
-    abstract override val viewModel : BaseLocationViewModel
+    abstract override val viewModel: BaseLocationViewModel
 
     private lateinit var adapter: HorizontalRVAdapter
     private lateinit var binding: ShowWeatherBinding
@@ -36,12 +41,9 @@ abstract class BaseLocationFragment : BaseFragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        Log.d("debugging", "Hello")
-
         swipeRefreshLayout.setOnRefreshListener {
             refreshData()
         }
-
 
         lifecycleScope.launch {
             viewModel.forecastWeather.collect {
@@ -67,7 +69,7 @@ abstract class BaseLocationFragment : BaseFragment() {
         }
     }
 
-    fun setupAdapter() {
+    private fun setupAdapter() {
 
         adapter = HorizontalRVAdapter(viewModel.forecastWeather.value)
 
@@ -78,7 +80,7 @@ abstract class BaseLocationFragment : BaseFragment() {
         binding.horizontalRecyclerView.layoutManager = layoutManager
     }
 
-    fun refreshData() {
+    private fun refreshData() {
         binding.swipeRefresh.isRefreshing = true
         viewModel.showCurrentForecastWeather()
     }
