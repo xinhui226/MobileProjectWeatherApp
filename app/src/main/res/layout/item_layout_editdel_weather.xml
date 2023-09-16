@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="18dp"
-                app:strokeColor="@color/gray"
+                app:strokeColor="@color/white"
                 app:strokeWidth="2dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,7 +111,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_hamborgor"
-            app:tint="@color/gray" />
+            app:tint="@color/white" />
 
     </LinearLayout>
 </layout>

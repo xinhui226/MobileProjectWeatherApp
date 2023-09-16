@@ -5,7 +5,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="1dp"
+        android:layout_marginHorizontal="2dp"
         android:gravity="center"
         android:background="@drawable/today_bg"
         android:orientation="vertical">
@@ -30,7 +30,7 @@
                     android:layout_marginBottom="5dp"
                     android:fontFamily="serif"
                     android:text="Temp"
-                    android:textColor="@color/black" />
+                    />
 
                 <ImageView
                     android:id="@+id/ivShowIconInHSV"
@@ -45,7 +45,7 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="serif"
                     android:text="Time"
-                    android:textColor="@color/black" />
+                    />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>

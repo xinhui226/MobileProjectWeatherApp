@@ -23,8 +23,7 @@ abstract class BaseFragment : Fragment() {
                         setBackgroundTint(
                             ContextCompat.getColor(requireContext(), R.color.red)
                         )
-                    }
-                    .show()
+                    }.show()
             }
         }
     }

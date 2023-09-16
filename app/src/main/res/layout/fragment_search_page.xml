@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="15dp"
+        android:background="@drawable/gradient_bg"
         tools:context=".ui.fragments.SearchPageFragment">
 
         <TextView
@@ -39,7 +40,8 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.002" />
+            app:layout_constraintVertical_bias="0.002"
+            app:tint="@color/white" />
 
         <AutoCompleteTextView
             android:id="@+id/autocomplete"

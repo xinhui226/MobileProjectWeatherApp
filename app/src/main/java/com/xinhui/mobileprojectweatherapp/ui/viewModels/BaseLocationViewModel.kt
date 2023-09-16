@@ -1,5 +1,6 @@
 package com.xinhui.mobileprojectweatherapp.ui.viewModels
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.xinhui.mobileprojectweatherapp.data.repository.RetrofitRepo
 import kotlinx.coroutines.Dispatchers
