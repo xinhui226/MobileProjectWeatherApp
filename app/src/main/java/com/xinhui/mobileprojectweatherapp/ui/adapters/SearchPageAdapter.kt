@@ -11,6 +11,7 @@ import com.xinhui.mobileprojectweatherapp.ui.util.update
 
 class SearchPageAdapter(
     private var locations:List<Location>,
+    private val onClickLocation:(Location)->Unit
 ): RecyclerView.Adapter<SearchPageAdapter.WeatherViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
@@ -27,6 +28,10 @@ class SearchPageAdapter(
             tvTemp.text = location.temp
             tvWeatherDesc.text = location.weatherDesc
             tvLocation.text = location.city
+            clLocation.setOnClickListener {
+                onClickLocation(location)
+            }
+            tvLastUpd.text = location.localtime
         }
     }
 

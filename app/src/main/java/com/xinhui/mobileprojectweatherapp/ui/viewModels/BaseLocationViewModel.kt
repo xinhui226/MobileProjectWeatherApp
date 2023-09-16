@@ -7,25 +7,24 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 abstract class BaseLocationViewModel(
-    protected val repo: RetrofitRepo
+    protected val repo: RetrofitRepo,
 ) : BaseViewModel() {
 
-    init {
-        showCurrentForecastWeather()
-    }
-
+    abstract val city:String
     fun showCurrentForecastWeather() {
         viewModelScope.launch(Dispatchers.IO) {
             safeApiCall {
-                repo.getCurrWeather("Osaka, Japan")
+                repo.getCurrWeather(city)
             }?.let {
                 currWeather.value = it
+                finishLoading.emit(Unit)
             }
 
             safeApiCall {
-                repo.getForecastWeather("Osaka, Japan")
+                repo.getForecastWeather(city)
             }?.let {
                 forecastWeather.value = it
+                finishLoading.emit(Unit)
             }
         }
     }

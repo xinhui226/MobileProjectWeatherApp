@@ -11,20 +11,22 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.xinhui.mobileprojectweatherapp.BuildConfig
 import com.xinhui.mobileprojectweatherapp.R
-import com.xinhui.mobileprojectweatherapp.databinding.ShowWeatherBinding
 import com.xinhui.mobileprojectweatherapp.ui.adapters.HorizontalRVAdapter
 import com.xinhui.mobileprojectweatherapp.ui.viewModels.BaseLocationViewModel
+import  com.xinhui.mobileprojectweatherapp.databinding.ShowWeatherBinding
 import kotlinx.coroutines.launch
 
 abstract class BaseLocationFragment : BaseFragment() {
     abstract override val viewModel: BaseLocationViewModel
 
     private lateinit var adapter: HorizontalRVAdapter
-    private lateinit var binding: ShowWeatherBinding
+    protected lateinit var binding: ShowWeatherBinding
+    protected lateinit var navController: NavController
 
 
     override fun onCreateView(
@@ -59,7 +61,6 @@ abstract class BaseLocationFragment : BaseFragment() {
 
         lifecycleScope.launch {
             viewModel.currWeather.collect {
-
                 Glide
                     .with(this@BaseLocationFragment)
                     .load("${BuildConfig.BaseIconUrl}${it.weather.icon}.png")

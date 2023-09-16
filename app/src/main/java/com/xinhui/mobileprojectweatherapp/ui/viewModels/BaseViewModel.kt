@@ -19,7 +19,6 @@ abstract class BaseViewModel() : ViewModel() {
         listOf(ForecastWeatherDisplay())
     )
 
-
     suspend fun <T>safeApiCall(callback: suspend () -> T?): T? {
         return try {
             Log.d("debugging", "Hello")
