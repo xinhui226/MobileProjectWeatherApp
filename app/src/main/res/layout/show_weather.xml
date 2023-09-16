@@ -393,61 +393,6 @@
                         android:scrollbars="none" />
 
                 </LinearLayout>
-                <!--        <HorizontalScrollView-->
-                <!--            android:layout_width="match_parent"-->
-                <!--            android:layout_height="wrap_content"-->
-                <!--            android:layout_marginHorizontal="16dp"-->
-                <!--            android:scrollbars="none"-->
-                <!--            android:background="@color/transparent"-->
-                <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--            app:layout_constraintEnd_toEndOf="parent"-->
-                <!--            app:layout_constraintStart_toStartOf="parent"-->
-                <!--            app:layout_constraintTop_toTopOf="@+id/guideline13"-->
-                <!--            app:layout_constraintVertical_bias="0.373">-->
-
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:background="@color/transparent"-->
-            <!--                android:orientation="horizontal">-->
-
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_marginEnd="10dp"-->
-            <!--                    android:background="@drawable/today_bg"-->
-            <!--                    android:gravity="center"-->
-            <!--                    android:orientation="vertical"-->
-            <!--                    android:padding="10dp"-->
-            <!--                    tools:layout_editor_absoluteX="16dp"-->
-            <!--                    tools:layout_editor_absoluteY="591dp">-->
-
-            <!--                    <TextView-->
-            <!--                        android:id="@+id/tvShowWeatherTempInHSV"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginBottom="5dp"-->
-            <!--                        android:text="Temp"-->
-            <!--                        android:fontFamily="serif"-->
-            <!--                        android:textColor="@color/black" />-->
-
-            <!--                    <ImageView-->
-            <!--                        android:id="@+id/ivShowIconInHSV"-->
-            <!--                        android:layout_width="20dp"-->
-            <!--                        android:layout_height="20dp"-->
-            <!--                        android:src="@drawable/ic_image" />-->
-
-            <!--                    <TextView-->
-            <!--                        android:id="@+id/tvShowTimeInHSV"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginTop="5dp"-->
-            <!--                        android:text="Time"-->
-            <!--                        android:fontFamily="serif"-->
-            <!--                        android:textColor="@color/black" />-->
-            <!--                </LinearLayout>-->
-            <!--            </LinearLayout>-->
-            <!--        </HorizontalScrollView>-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
             <LinearLayout
