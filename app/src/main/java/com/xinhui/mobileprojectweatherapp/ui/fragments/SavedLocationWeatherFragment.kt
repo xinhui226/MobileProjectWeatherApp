@@ -28,6 +28,13 @@ class SavedLocationWeatherFragment() : BaseLocationFragment() {
         viewModel.check()
         viewModel.showCurrentForecastWeather()
 
+        viewModel.finishLoading.asLiveData().observe(viewLifecycleOwner){
+            binding.run {
+                llLoading.visibility = View.GONE
+                clShowWeather.visibility = View.VISIBLE
+            }
+        }
+
         viewModel.locationSaved.asLiveData().observe(viewLifecycleOwner){
             binding.run {
                 tvSave.visibility = if(it) View.GONE else View.VISIBLE
