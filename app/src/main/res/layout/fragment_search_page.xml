@@ -54,7 +54,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWeather"
             android:padding="10dp"
-            android:popupBackground="@color/light_gray"
+            android:popupBackground="@color/dark_gray"
             android:completionHintView="@color/white"
             android:textColorHint="@color/white"
             app:hintTextAppearance="@color/white"
