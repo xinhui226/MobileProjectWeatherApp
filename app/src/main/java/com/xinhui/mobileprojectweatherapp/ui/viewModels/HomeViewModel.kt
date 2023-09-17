@@ -28,8 +28,9 @@ class HomeViewModel(
 
             if (existLocation == null){
                 currWeather.collect{
-                    val location = Location(1,city,it.temp,it.timestamp,it.weather.description)
+                    val location = Location(1,city,"George Town",it.temp,it.timestamp,it.weather.description)
                     locationRepo.savedLocation(location)
+                    locationRepo.updateLocationPriority(1,0)
                 }
             }
         }

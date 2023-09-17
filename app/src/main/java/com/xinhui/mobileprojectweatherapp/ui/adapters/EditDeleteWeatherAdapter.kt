@@ -36,7 +36,10 @@ class EditDeleteWeatherAdapter(
             tvLastUpd.text = location.localtime
             tvWeatherDesc.text = location.weatherDesc
             tvLocation.text = location.city
-            ivDelete.setOnClickListener { onDeleteClick(location) }
+            ivDelete.setOnClickListener {
+                shouldUpdate = true
+                onDeleteClick(location)
+            }
 
             if(position == 0){
                 ivDelete.visibility = View.GONE
@@ -65,7 +68,7 @@ class EditDeleteWeatherAdapter(
     }
 
     override fun onRowMoved(fromPosition: Int, toPosition: Int) {
-        if(toPosition!= 0){
+        if(toPosition != 0){
             onDragUpDown(fromPosition, toPosition)
             Collections.swap(locations, fromPosition, toPosition)
             notifyItemMoved(fromPosition, toPosition)

@@ -31,7 +31,7 @@ class SearchPageViewModel(
     private fun loadLocationWeather() {
         viewModelScope.launch(Dispatchers.IO) {
             locationRepo.getLocations().first().toList().forEach { location ->
-                retrofitRepo.getCurrWeather(location.city).let {
+                retrofitRepo.getCurrWeather(location.savecityname).let {
                     locationRepo.updateLocationWeather(
                         location.id!!,
                         it.cityName,

@@ -27,10 +27,9 @@ class SavedLocationWeatherViewModel(
 
     fun check(){
         viewModelScope.launch(Dispatchers.IO) {
-            val searchCity = repo.getCurrWeather(city).cityName
             locationRepo.getLocations().collect{
                 it.forEach { location ->
-                    if(searchCity == location.city) locationSaved.value = true
+                    if(city == location.savecityname) locationSaved.value = true
                 }
             }
         }
@@ -46,10 +45,12 @@ class SavedLocationWeatherViewModel(
             else{
                 val location = repo.getCurrWeather(city)
                 locationRepo.savedLocation(
-                    Location(city = location.cityName,
+                    Location(
+                        city = location.cityName,
                         temp = location.temp,
                         localtime = localtimeFormatter(location.timezone,location.timestamp),
-                        weatherDesc = location.weather.description)
+                        weatherDesc = location.weather.description,
+                        savecityname = city)
                 )
                 locationSaved.value = true
             }

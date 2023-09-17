@@ -111,7 +111,7 @@ class SearchPageFragment : Fragment() {
 
     fun setupAdapter(){
         adapter = SearchPageAdapter(emptyList()){
-            val action = SearchPageFragmentDirections.actionSearchPageToSavedLocationWeather(it.city,it.id!!)
+            val action = SearchPageFragmentDirections.actionSearchPageToSavedLocationWeather(it.savecityname,it.id!!)
             navController.navigate(action)
         }
 

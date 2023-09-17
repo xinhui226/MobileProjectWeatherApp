@@ -38,7 +38,7 @@ class SavedLocationWeatherFragment() : BaseLocationFragment() {
         viewModel.locationSaved.asLiveData().observe(viewLifecycleOwner){
             binding.run {
                 tvSave.visibility = if(it) View.GONE else View.VISIBLE
-                tvRemove.visibility = if(!it) View.GONE else View.VISIBLE
+                tvRemove.visibility = if(!it || navArgs.locationId == 1) View.GONE else View.VISIBLE
                 tvSave.setOnClickListener {
                     this@SavedLocationWeatherFragment.viewModel.addLocation()
                 }
