@@ -20,15 +20,29 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clShowWeather"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone">
 
+                <ImageView
+                    android:id="@+id/ivListItemMenu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:src="@drawable/ic_list"
+                    app:tint="@color/white"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                     />
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="2dp"
+                    android:layout_height="6dp"
                     android:padding="10dp"
                     app:layout_constraintBottom_toTopOf="@+id/guideline3"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -36,36 +50,37 @@
                     app:layout_constraintStart_toStartOf="@+id/guideline5"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.123">
-                    <ImageView
-                        android:id="@+id/ivListItemMenu"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_list"
-                        android:layout_gravity="end"
-                        />
+
+
+
                     <TextView
                         android:id="@+id/tvSave"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="save_location"
-                        android:textSize="16sp"
                         android:layout_gravity="end"
-                        android:visibility="gone"/>
+                        android:text="@string/save_location"
+                        android:textSize="18sp"
+                        android:visibility="gone"
+                        />
+
                     <TextView
                         android:id="@+id/tvRemove"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="remove"
-                        android:textSize="16sp"
                         android:layout_gravity="end"
-                        android:visibility="gone"/>
+                        android:text="@string/remove"
+                        android:textSize="18sp"
+                        android:visibility="gone"
+                        />
+
                     <TextView
                         android:id="@+id/tvCancel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="cancel"
-                        android:textSize="16sp"
-                        android:visibility="gone"/>
+                        android:text="@string/cancel"
+                        android:textSize="18sp"
+                        android:visibility="gone"
+                        />
                 </FrameLayout>
 
                 <TextView
@@ -74,7 +89,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text="@{viewModel.currWeather.cityName}"
-                    android:textColor="@color/black"
                     android:textSize="35sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guideline3"
@@ -92,7 +106,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/guideline3"
-                    app:layout_constraintVertical_bias="0.793" />
+                    app:layout_constraintVertical_bias="0.795" />
 
                 <TextView
                     android:id="@+id/tvShowWeatherTemp"
@@ -101,16 +115,28 @@
                     android:fontFamily="sans-serif"
                     android:paddingStart="15dp"
                     android:text="@{viewModel.currWeather.temp}"
-                    android:textColor="@color/black"
                     android:textSize="75sp"
                     android:textStyle="bold|normal"
                     app:layout_constraintBottom_toTopOf="@+id/guideline12"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.501"
+                    app:layout_constraintHorizontal_bias="0.482"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/guideline4"
-                    app:layout_constraintVertical_bias="0.425"
+                    app:layout_constraintVertical_bias="0.400"
                     tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/c"
+                    android:textSize="35sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.047"
+                    app:layout_constraintStart_toEndOf="@+id/tvShowWeatherTemp"
+                    app:layout_constraintTop_toTopOf="@+id/guideline4"
+                    app:layout_constraintVertical_bias="0.310" />
 
                 <TextView
                     android:id="@+id/tvShowWeatherCondi"
@@ -118,7 +144,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text="@{viewModel.currWeather.weather.description}"
-                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="normal"
                     app:layout_constraintBottom_toTopOf="@+id/guideline12"
@@ -132,11 +157,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     app:cardCornerRadius="18dp"
+                    android:backgroundTint="#3CF1EBF1"
                     app:layout_constraintBottom_toTopOf="@+id/guideline13"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/guideline12"
-                    app:strokeColor="@color/black"
+                    app:strokeColor="@color/white"
                     app:strokeWidth="2dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -160,7 +186,8 @@
                                 android:id="@+id/ivIcon"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/wind_speed" />
+                                android:src="@drawable/wind_speed"
+                                app:tint="@color/white" />
 
                             <TextView
                                 android:id="@+id/tvShowSpeed"
@@ -168,8 +195,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="serif"
-                                android:text="@{viewModel.currWeather.windSpeed}"
-                                android:textColor="@color/black" />
+                                android:text="@{viewModel.currWeather.windSpeed}" />
 
                             <TextView
                                 android:id="@+id/tvShowWeatherType"
@@ -177,7 +203,6 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="serif"
                                 android:text="Wind"
-                                android:textColor="@color/black"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
@@ -188,7 +213,7 @@
                             android:layout_height="0dp"
                             android:layout_marginHorizontal="10dp"
                             android:layout_marginStart="20dp"
-                            android:background="@color/black"
+                            android:background="@color/white"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/linearLayout"
                             app:layout_constraintTop_toTopOf="parent"
@@ -199,7 +224,7 @@
                             android:layout_width="3dp"
                             android:layout_height="0dp"
                             android:layout_marginStart="152dp"
-                            android:background="@color/black"
+                            android:background="@color/white"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/linearLayout"
                             app:layout_constraintTop_toTopOf="parent"
@@ -222,7 +247,8 @@
                                 android:id="@+id/imageView4"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/air_quality" />
+                                android:src="@drawable/air_quality"
+                                app:tint="@color/white" />
 
                             <TextView
                                 android:id="@+id/textView3"
@@ -230,8 +256,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="serif"
-                                android:text="@{viewModel.currWeather.airQuality}"
-                                android:textColor="@color/black" />
+                                android:text="@{viewModel.currWeather.airQuality}" />
 
                             <TextView
                                 android:id="@+id/textView5"
@@ -239,7 +264,6 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="serif"
                                 android:text="@string/us_aqi"
-                                android:textColor="@color/black"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
@@ -286,22 +310,21 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/humidity" />
+                                android:src="@drawable/humidity"
+                                app:tint="@color/white" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:fontFamily="serif"
-                                android:text="@{viewModel.currWeather.humidity}"
-                                android:textColor="@color/black" />
+                                android:text="@{viewModel.currWeather.humidity}" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="serif"
                                 android:text="@string/humidity"
-                                android:textColor="@color/black"
                                 android:textSize="12sp" />
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -315,7 +338,6 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="serif"
                     android:text="@string/today"
-                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -395,21 +417,22 @@
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <LinearLayout
                 android:id="@+id/llLoading"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:background="@drawable/gradient_bg"
                 android:gravity="center"
-                android:background="@color/gray"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="loading"
-                    android:textSize="35sp"
-                    android:textColor="@color/gray"
-                    />
+                android:orientation="vertical">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_gravity="center"
+                    android:layout_width="500dp"
+                    android:layout_height="500dp"
+                    app:lottie_rawRes="@raw/animation_lmm"
+                    app:lottie_loop="true"
+                    app:lottie_autoPlay="true"/>
             </LinearLayout>
         </FrameLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

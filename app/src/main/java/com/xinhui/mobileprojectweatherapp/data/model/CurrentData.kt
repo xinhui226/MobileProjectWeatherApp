@@ -45,7 +45,7 @@ data class CurrentData(
             city_name,
             aqi.toString(),
             rh.toString()+"%",
-            temp.toInt().toString()+"°C",
+            temp.toInt().toString(),
             ((temp.toInt())*9/5+32).toString()+"°F",
             uv.toInt().toString(),
             weather,
