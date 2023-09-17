@@ -8,19 +8,20 @@
         android:orientation="horizontal"
         android:layout_marginVertical="10dp">
 
-
         <ImageView
             android:id="@+id/ivDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="5dp"
             android:src="@drawable/ic_remove"
             app:tint="@color/red" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:background="@color/transparent"
             android:orientation="vertical"
             >
             <com.google.android.material.card.MaterialCardView
@@ -28,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="18dp"
+                android:backgroundTint="#3CF1EBF1"
                 app:strokeColor="@color/white"
                 app:strokeWidth="2dp">
 
@@ -110,6 +112,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
             android:src="@drawable/ic_hamborgor"
             app:tint="@color/white" />
 
