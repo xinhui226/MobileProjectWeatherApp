@@ -7,4 +7,6 @@
     <color name="blue">#83baea</color>
     <color name="red">#F8CD1616</color>
     <color name="transparent">#00000000</color>
+    <color name="dark_gray">#FA4A4949</color>
+
 </resources>
