@@ -40,10 +40,11 @@
                     app:layout_constraintTop_toTopOf="parent"
                      />
                 <FrameLayout
+                    android:id="@+id/tvSaveDelete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline3"
+                    app:layout_constraintBottom_toTopOf="@+id/tvShowLocation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.86"
                     app:layout_constraintStart_toStartOf="@+id/guideline5"
@@ -88,10 +89,11 @@
                     android:text="@{viewModel.currWeather.cityName}"
                     android:textSize="35sp"
                     android:textStyle="bold"
+                    android:gravity="center"
                     app:layout_constraintBottom_toTopOf="@+id/guideline3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSaveDelete"
                     app:layout_constraintVertical_bias="0.911" />
 
                 <ImageView
@@ -116,10 +118,10 @@
                     android:textStyle="bold|normal"
                     app:layout_constraintBottom_toTopOf="@+id/guideline12"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.482"
+                    app:layout_constraintHorizontal_bias="0.462"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/guideline4"
-                    app:layout_constraintVertical_bias="0.400"
+                    app:layout_constraintVertical_bias="0.487"
                     tools:ignore="RtlSymmetry" />
 
                 <TextView
@@ -130,10 +132,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guideline12"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.047"
+                    app:layout_constraintHorizontal_bias="0.045"
                     app:layout_constraintStart_toEndOf="@+id/tvShowWeatherTemp"
                     app:layout_constraintTop_toTopOf="@+id/guideline4"
-                    app:layout_constraintVertical_bias="0.310" />
+                    app:layout_constraintVertical_bias="0.347" />
 
                 <TextView
                     android:id="@+id/tvShowWeatherCondi"
@@ -199,7 +201,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="serif"
-                                android:text="Wind"
+                                android:text="@string/wind"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
