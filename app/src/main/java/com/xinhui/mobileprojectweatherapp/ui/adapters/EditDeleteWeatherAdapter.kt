@@ -2,6 +2,7 @@ package com.xinhui.mobileprojectweatherapp.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.View
 import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,11 @@ class EditDeleteWeatherAdapter(
             tvWeatherDesc.text = location.weatherDesc
             tvLocation.text = location.city
             ivDelete.setOnClickListener { onDeleteClick(location) }
+
+            if(position == 0){
+                ivDelete.visibility = View.GONE
+                ivDrag.visibility = View.GONE
+            }
         }
 
         holder.vbinding.ivDrag.setOnTouchListener(OnTouchListener { v, event ->
@@ -59,9 +65,11 @@ class EditDeleteWeatherAdapter(
     }
 
     override fun onRowMoved(fromPosition: Int, toPosition: Int) {
+        if(toPosition!= 0){
             onDragUpDown(fromPosition, toPosition)
             Collections.swap(locations, fromPosition, toPosition)
             notifyItemMoved(fromPosition, toPosition)
+        }
     }
 
     override fun onRowSelected(myViewHolder: WeatherViewHolder?) {
