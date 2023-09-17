@@ -83,7 +83,7 @@ class SearchPageFragment : Fragment() {
             ivSearch.setOnClickListener {
                 if (autocomplete.text.toString().isEmpty()){
                     Snackbar.make(view,
-                        "search a city...",
+                        "Search a city...",
                         Snackbar.LENGTH_LONG)
                         .show()
                 }
@@ -91,7 +91,7 @@ class SearchPageFragment : Fragment() {
                     selectedCity = autocomplete.text.replace("\\s".toRegex(), "")
                     if (!cities.contains(selectedCity)) {
                         Snackbar.make(view,
-                            "city not found, try with another city",
+                            "Oops! City not found",
                             Snackbar.LENGTH_LONG).show()
                     }
                     else{

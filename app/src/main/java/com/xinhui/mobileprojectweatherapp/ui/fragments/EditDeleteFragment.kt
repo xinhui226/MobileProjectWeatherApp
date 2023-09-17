@@ -53,15 +53,6 @@ class EditDeleteFragment : Fragment(),StartDragListener {
             }
         }
 
-//        viewModel.currentWeather.asLiveData().observe(viewLifecycleOwner) {
-//            Log.d(TAG, it.toString())
-//        }
-//        viewModel.forecastWeather.asLiveData().observe(viewLifecycleOwner){
-//            viewModel.forecastWeather.value.map {
-//                Log.d(TAG,  it.toString())
-//            }
-//        }
-
         setupAdapter()
 
         lifecycleScope.launch{

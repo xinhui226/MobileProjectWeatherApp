@@ -9,10 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.xinhui.mobileprojectweatherapp.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/show_weather" >
+        tools:layout="@layout/show_weather">
         <action
             android:id="@+id/action_home_to_searchPage"
-            app:destination="@id/searchPageFragment" />
+            app:destination="@id/searchPageFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
     </fragment>
     <fragment
         android:id="@+id/searchPageFragment"
@@ -21,25 +25,35 @@
         tools:layout="@layout/search_page">
         <action
             android:id="@+id/action_searchPage_to_editDelete"
-            app:destination="@id/editDeleteFragment" />
+            app:destination="@id/editDeleteFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
         <action
             android:id="@+id/action_searchPage_to_home"
             app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_searchPage_to_savedLocationWeather"
-            app:destination="@id/savedLocationWeatherFragment" />
+            app:destination="@id/savedLocationWeatherFragment"
+            app:popEnterAnim="@anim/slide_from_top"
+            app:popExitAnim="@anim/slide_to_bottom" />
     </fragment>
     <fragment
         android:id="@+id/editDeleteFragment"
         android:name="com.xinhui.mobileprojectweatherapp.ui.fragments.EditDeleteFragment"
         android:label="EditDeleteFragment"
-        tools:layout="@layout/edit_delete_weather"/>
+        tools:layout="@layout/edit_delete_weather" />
     <fragment
         android:id="@+id/savedLocationWeatherFragment"
         android:name="com.xinhui.mobileprojectweatherapp.ui.fragments.SavedLocationWeatherFragment"
         android:label="fragment_saved_location_weather"
         tools:layout="@layout/show_weather">
-        <argument app:argType="string" android:name="city" />
-        <argument app:argType="integer" android:name="location_id"/>
+        <argument
+            android:name="city"
+            app:argType="string" />
+        <argument
+            android:name="location_id"
+            app:argType="integer" />
     </fragment>
 </navigation>
