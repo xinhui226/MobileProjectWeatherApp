@@ -17,6 +17,8 @@ class HomeFragment : BaseLocationFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.showCurrentForecastWeather()
+
         navController = NavHostFragment.findNavController(this)
 
         viewModel.finishLoading.asLiveData().observe(viewLifecycleOwner){
