@@ -17,7 +17,7 @@ abstract class BaseLocationViewModel(
                 repo.getCurrWeather(city)
             }?.let {
                 currWeather.value = it
-                finishLoading.emit(Unit)
+                //finishLoading.emit(Unit)
             }
 
             safeApiCall {
