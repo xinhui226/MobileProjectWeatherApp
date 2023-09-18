@@ -15,4 +15,11 @@
     <string name="search_a_city">Search a city</string>
     <string name="done">Done</string>
     <string name="weather">Weather</string>
+    <string name="search_for_a_city">Search for a City</string>
+    <string name="_24">24</string>
+    <string name="weather_type">Weather Type</string>
+    <string name="last_updated_2023_09_05_14_02">Last updated : 2023-09-05 14:02</string>
+    <string name="temp">Temp</string>
+    <string name="time">Time</string>
+    <string name="wind">Wind</string>
 </resources>
