@@ -16,7 +16,7 @@ class HomeViewModel(
     repo: RetrofitRepo,
     val locationRepo: LocationRepo
 ) : BaseLocationViewModel(repo) {
-    override var city = "Georgetown,MY"
+    override var city = "George Town,Malaysia"
     init {
         showCurrentForecastWeather()
         savedInitLocation()
