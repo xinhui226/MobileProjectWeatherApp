@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Mobile Project WeatherApp</string>
+    <string name="location">Location</string>
+    <string name="hello">Hello</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="humidity">Humidity</string>
+    <string name="us_aqi">US AQI</string>
+    <string name="today">Today</string>
+    <string name="save_location">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="remove">Remove</string>
+    <string name="loading">Loading...</string>
+    <string name="c">°C</string>
+    <string name="search_a_city">Search a city</string>
+    <string name="done">Done</string>
+    <string name="weather">Weather</string>
+    <string name="search_for_a_city">Search for a City</string>
+    <string name="_24">24</string>
+    <string name="weather_type">Weather Type</string>
+    <string name="last_updated_2023_09_05_14_02">Last updated : 2023-09-05 14:02</string>
+    <string name="temp">Temp</string>
+    <string name="time">Time</string>
+    <string name="wind">Wind</string>
 </resources>
